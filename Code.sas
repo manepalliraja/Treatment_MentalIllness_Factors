@@ -1,5 +1,3 @@
-ODS RTF FILE='\\tsclient\F\UB MS MIS\SAS Symposium\Symposium\Results.RTF';
-
 proc sql;
 create table Analysis2014 as
 select * from Health2014
@@ -341,12 +339,9 @@ proc logistic data = work.Analysis2014 descending;
 model Treatmnt = Age Male Remote_Wrk Family_Hist Ben_CO WP_SH Anonym Leave_easy;
 run;
 
-ODS RTF CLOSE;
 
-ODS RTF FILE='\\tsclient\F\UB MS MIS\SAS Symposium\Symposium\Bar.RTF';
 proc gchart data=Coeff;
 axis1 stagger label=none;
 footnote h=.02 in ' ';
 vbar Variable/ sumvar=Odds maxis=axis1;
 run;
-ODS RTF CLOSE;
